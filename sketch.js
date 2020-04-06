@@ -1,56 +1,31 @@
+let x = 100,
+  y = 100,
+  angle1 = 0.0,
+  segLength = 50;
+
 function setup() {
-  createCanvas(710, 400, WEBGL);
+  createCanvas(windowWidth, windowHeight);
+  strokeWeight(20.0);
+  stroke(255, 100);
 }
 
 function draw() {
-  background(250);
+  background(0);
 
-  translate(-240, -100, 0);
-  normalMaterial();
-  push();
-  rotateZ(frameCount * 0.01);
-  rotateX(frameCount * 0.01);
-  rotateY(frameCount * 0.01);
-  plane(70);
-  pop();
+  dx = mouseX - x;
+  dy = mouseY - y;
+  angle1 = atan2(dy, dx);
+  x = mouseX - cos(angle1) * segLength;
+  y = mouseY - sin(angle1) * segLength;
 
-  translate(240, 0, 0);
-  push();
-  rotateZ(frameCount * 0.01);
-  rotateX(frameCount * 0.01);
-  rotateY(frameCount * 0.01);
-  box(70, 70, 70);
-  pop();
+  segment(x, y, angle1);
+  ellipse(x, y, 20, 20);
+}
 
-  translate(240, 0, 0);
+function segment(x, y, a) {
   push();
-  rotateZ(frameCount * 0.01);
-  rotateX(frameCount * 0.01);
-  rotateY(frameCount * 0.01);
-  cylinder(70, 70);
-  pop();
-
-  translate(-240 * 2, 200, 0);
-  push();
-  rotateZ(frameCount * 0.01);
-  rotateX(frameCount * 0.01);
-  rotateY(frameCount * 0.01);
-  cone(70, 70);
-  pop();
-
-  translate(240, 0, 0);
-  push();
-  rotateZ(frameCount * 0.01);
-  rotateX(frameCount * 0.01);
-  rotateY(frameCount * 0.01);
-  torus(70, 20);
-  pop();
-
-  translate(240, 0, 0);
-  push();
-  rotateZ(frameCount * 0.01);
-  rotateX(frameCount * 0.01);
-  rotateY(frameCount * 0.01);
-  sphere(70);
+  translate(x, y);
+  rotate(a);
+  line(0, 0, segLength, 0);
   pop();
 }
