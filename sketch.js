@@ -4,12 +4,14 @@ let x = 100,
   segLength = 50;
 
 function setup() {
+fullscreen(true)
   createCanvas(windowWidth, windowHeight);
   strokeWeight(20.0);
   stroke(255, 100);
 }
 
 function draw() {
+resizeCanvas(windowWidth, windowHeight)
   background(0);
 
   dx = mouseX - x;
