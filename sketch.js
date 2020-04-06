@@ -29,3 +29,8 @@ function segment(x, y, a) {
   line(0, 0, segLength, 0);
   pop();
 }
+function touchMoved() {
+  //ellipse(mouseX, mouseY, 5, 5);
+  // prevent default
+  return false;
+}
